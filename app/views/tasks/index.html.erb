@@ -1,0 +1,24 @@
+<h1>Welcome to To_Do_do</h1>
+
+
+<a href='/new'>Click here to create NEW task</a>
+
+  <h1>DONE </h1>
+  <% @tasks.each do |task| %>
+    <% if task.done == false %>
+      <form action="/tasks/<%= task.id %>" method="post">
+      <a href="/tasks/<%= task.id %>"><%= task.name %></a>
+      <a href='/tasks/<%= task.id %>/done' rel='nofollow'>Done</a>
+      </form>
+      <%end%>
+  <%end%>
+
+  <h1> NOT DONE </h1>
+  <% @tasks.each do |task| %>
+    <% if task.done == true %>
+      <form action="/tasks/<%= task.id %>" method="post">
+    <a href="/tasks/<%= task.id %>"><%= task.name %></a>
+    <a href='/tasks/<%= task.id %>/not_done' rel='nofollow'> Not Done</a>
+    </form>
+    <%end%>
+  <%end%>
